@@ -102,8 +102,8 @@ Other results:
   heuristic in low traffic; **honest weakness**: in the single-intersection accident, the
   longest-queue heuristic is slightly better (17.4 s vs 19.4 s);
 - hyper-parameter random search (12 configs × 150 episodes): best = lr 3e-4, γ 0.98, clip 0.3,
-  entropy 0.03, ε-start 0.3 (9.6 s); runs **without** exploration (no ε-greedy, no entropy) were the
-  worst (19–29 s), which confirms the value of early exploration.
+  entropy 0.03, ε-start 0.3 (9.6 s); 9 of 12 configurations land between 9.6 and 12.5 s (PPO is
+  robust to its settings, and our defaults are in that band); 3 runs were unstable (19–29 s).
 
 **Limitations & perspectives:** simplified simulator (→ SUMO/TraCI), 2 phases only (→ 4 phases with
 protected left turns), multimodal variant (pedestrians, buses with priority), explicit coordination

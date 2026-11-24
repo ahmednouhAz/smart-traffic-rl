@@ -266,10 +266,12 @@ Other figures in `results/single/` and `results/grid2x2/`:
 **Hyper-parameter tuning** (`results/tuning/`): 12 random configurations × 150 episodes.
 The best one (lr 3e-4, γ 0.98, clip 0.3, entropy 0.03, ε-start 0.3) scored 9.6 s, close to our
 defaults. Lessons:
-* configurations with **no epsilon-greedy and no entropy** (trials 10, 11) did the worst (19–29 s):
-  early exploration really matters;
-* too large a learning rate combined with a large network is unstable;
-* γ between 0.95 and 0.98 works best (decisions are ~15 s apart).
+* **PPO is robust here**: 9 of the 12 configurations land between 9.6 and 12.5 s, and our default
+  settings sit in that band;
+* three runs were unstable (19–29 s). Two of them had no epsilon-greedy (trials 10, 11), but three
+  other runs without epsilon-greedy were fine (11.2–11.8 s). With 150 episodes and one seed per
+  trial, the search **can't isolate** the effect of a single hyper-parameter. Say so honestly if
+  asked: a proper study would need several seeds per configuration.
 
 ---
 
@@ -303,7 +305,8 @@ gradient is cut, which prevents catastrophic policy collapses.
 **Q: Why do you need epsilon-greedy if PPO is stochastic?**
 At the start the policy is almost uniform anyway, but it can quickly become over-confident in
 bad actions (e.g. always 30 s). Forcing ε % random actions early guarantees all durations and
-phases are tried. The tuning showed that runs without exploration were the worst.
+phases are tried. It is also what the brief asked for. (Our short tuning runs don't prove it is
+necessary: some runs without it also did well.)
 
 **Q: How do you avoid the agent switching lights all the time?**
 Switching costs 3 s of yellow during which nobody crosses. This lost time increases waiting,
