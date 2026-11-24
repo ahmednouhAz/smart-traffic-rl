@@ -1,0 +1,52 @@
+{
+  "env": {
+    "rows": 1,
+    "cols": 1,
+    "episode_length": 3600,
+    "n_cells": 25,
+    "obs_cells": 10,
+    "v_max": 2,
+    "sat_headway": 2,
+    "yellow_time": 3,
+    "green_durations": [
+      5,
+      10,
+      15,
+      20,
+      25,
+      30
+    ],
+    "wait_coef": 0.01,
+    "queue_coef": 0.1,
+    "co2_coef": 0.0,
+    "scenarios": [
+      "normal",
+      "unbalanced",
+      "rush_hour",
+      "accident"
+    ],
+    "turn_probs": [
+      0.7,
+      0.15,
+      0.15
+    ]
+  },
+  "ppo": {
+    "lr": 0.0003,
+    "gamma": 0.98,
+    "gae_lambda": 0.95,
+    "clip_eps": 0.2,
+    "epochs": 8,
+    "minibatch_size": 256,
+    "rollout_steps": 2048,
+    "entropy_coef": 0.01,
+    "value_coef": 0.5,
+    "max_grad_norm": 0.5,
+    "hidden": 128,
+    "eps_start": 0.3,
+    "eps_end": 0.0,
+    "eps_decay_fraction": 0.3,
+    "total_episodes": 600,
+    "seed": 0
+  }
+}
