@@ -1,0 +1,10 @@
+{
+  "trial": 2,
+  "lr": 0.0003,
+  "gamma": 0.98,
+  "clip_eps": 0.3,
+  "entropy_coef": 0.03,
+  "hidden": 128,
+  "eps_start": 0.3,
+  "mean_waiting_time": 9.6
+}
